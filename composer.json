@@ -1,0 +1,20 @@
+{
+    "name": "aeroasahi/upreport",
+    "require": {
+        "monolog/monolog": "^2.2",
+        "google/apiclient": "^2.9",
+        "simonbackx/slack-php-webhook": "^1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Aeroasahi\\Upreport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yoichigmf",
+            "email": "yoichi.kayama@gmail.com"
+        }
+    ]
+}
