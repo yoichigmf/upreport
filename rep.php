@@ -1,5 +1,5 @@
-<?php\n
-header('Content-Type: text/html; charset=UTF-8');
+<?php
+
 require_once __DIR__ . '/vendor/autoload.php';
 include_once __DIR__.'/src/report_bot.php';
 
