@@ -26,10 +26,10 @@ else {
 	session_start();
 
         $token_str = $_POST["token"];
-        $cmd =   $_POST["command"] ;
+        $cmd =   $_POST["command"];
         
-        $log->addWarning("token => ${token_str}\n");
-        $log->addWarning("cmd => ${cmd}\n");
+        $log->addWarning("token  ${token_str}");
+        $log->addWarning("cmd  ${cmd}");
 
 	if ( $_POST["command"] == "START" ) {
         # check token
