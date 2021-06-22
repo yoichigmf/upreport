@@ -1,4 +1,15 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
+require_once __DIR__ . '/vendor/autoload.php';
+include_once __DIR__.'/src/report_bot.php';
+
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+
+$log = new Logger('name');
+$log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
 
 
@@ -6,7 +17,8 @@
 if (count($_POST) ==0 ) {
 
 	http_response_code( 400 );
-	print("no args");
+	 $log->addWarning("no args"");
+	
 	exit;
 }
 else {
@@ -14,6 +26,10 @@ else {
 	session_start();
 
         $token_str = $_POST["token"];
+        $cmd =   $_POST["command"] ;
+        
+        $log->addWarning("token => ${token_str}\n");
+        $log->addWarning("cmd => ${cmd}\n");
 
 	if ( $_POST["command"] == "START" ) {
         # check token
