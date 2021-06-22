@@ -1,4 +1,4 @@
-<?php
+<?php\n
 header('Content-Type: text/html; charset=UTF-8');
 require_once __DIR__ . '/vendor/autoload.php';
 include_once __DIR__.'/src/report_bot.php';
@@ -17,7 +17,7 @@ $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 if (count($_POST) ==0 ) {
 
 	http_response_code( 400 );
-	 $log->addWarning("no args");
+	 $log->warning("no args");
 	
 	exit;
 }
@@ -28,8 +28,8 @@ else {
         $token_str = $_POST["token"];
         $cmd =   $_POST["command"];
         
-        $log->addWarning("token  ${token_str}");
-        $log->addWarning("cmd  ${cmd}");
+        $log->warning("token  ${token_str}\n");
+        $log->warning("cmd  ${cmd}\n");
 
 	if ( $_POST["command"] == "START" ) {
         # check token
