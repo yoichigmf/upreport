@@ -71,7 +71,7 @@ else {
 	}
 
 	#   token check
-	if (  strcmp($token_str, $_SESSION["token"]) == 0  ) {
+	if (  strcmp($token_str, $_SESSION["token"]) != 0  ) {
                    http_response_code( 401 );
                    $log->warning("unauthorized token is not same ${token_str}\n");
                   $log->warning("session token  ". $_SESSION["token"] );
