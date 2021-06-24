@@ -57,15 +57,15 @@ else {
 
                             //  expire 
 	       }
-
+ 	      $_SESSION["token"] = $token_str;
                http_response_code( 200 );
                 print("START \n");
 	       #
 	       print $r;
 	       #
 	       print $res->expires_in;
-	       #O
-        	$_SESSION["token"] = $token_str;
+	     
+        	#$_SESSION["token"] = $token_str;
 	         exit;
 
 	}
