@@ -45,18 +45,18 @@ else {
 	       $res = json_decode($r);
 
 
-	       if ( $res->error ) {
+	       if ( $res == null ) {
                    http_response_code( 401 );
                    print("unauthorized\n");
 		       print "error";
 		   exit;
 	       }
 
-               $nowt = new DateTime("now");
-	       if (  $res->expires_in < $nowt ){
+          //     $nowt = new DateTime("now");
+	      // if (  $res->expires_in < $nowt ){
 
                             //  expire 
-	       }
+	      // }
  	      $_SESSION["token"] = $token_str;
                http_response_code( 200 );
                 print("START \n");
