@@ -59,7 +59,7 @@ else {
 	      // }
  	      $_SESSION["token"] = $token_str;
                http_response_code( 200 );
-                print("START \n");
+                $log->warning(""START \n");
 	       #
 	       print $r;
 	       #
@@ -80,17 +80,26 @@ else {
 	       }
 
 	if ( $_POST["command"] == "DATA" ) {
-        # check token
+
+        #  data kind
+        
+        
+                $log->warning("data kind ");
+                $log->warning($_POST["kind"] );
 
 
-
-	#  data regist
+                $log->warning("data note ");
+                $log->warning($_POST["note"] );
+    	#  data regist
 		#
 		#
                http_response_code( 200 );
-                print("DATA\n");
-                print("token " . $token_str);
-                print("\n session token " . $_SESSION["token"]);
+                $log->warning("DATA\n");
+              #  print("token " . $token_str);
+              # $log->warning("\n session token " . $_SESSION["token"]);
+                
+                
+                
 #
 	         exit;
 	}
