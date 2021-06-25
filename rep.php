@@ -59,7 +59,7 @@ else {
 	      // }
  	      $_SESSION["token"] = $token_str;
                http_response_code( 200 );
-                $log->warning(""START \n");
+                $log->warning("START \n");
 	       #
 	       print $r;
 	       #
