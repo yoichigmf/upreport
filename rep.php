@@ -12,7 +12,11 @@ $log = new Logger('name');
 $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
 
+$spreadsheetId = getenv('SPREADSHEET_ID');
+//   書き込み対象シートの名前を取得しておく
+$target_sheetname = GetTargetSheetName( $spreadsheetId);
 
+ $log->warning("target_sheet  ${target_sheetname}\n");
 
 if (count($_POST) ==0 ) {
 
