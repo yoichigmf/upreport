@@ -119,7 +119,7 @@ else {
 		     
 		     $dev = "";
 		     
-		      AddText(  $user, $timestr, $lat, $lon, $tgText, $kind, $dev )
+		      AddText(  $user, $timestr, $lat, $lon, $tgText, $kind, $dev );
 		
 		}
 		#
