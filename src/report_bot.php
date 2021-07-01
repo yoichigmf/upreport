@@ -281,7 +281,7 @@ function  AddText(  $user, $timestr, $lat, $lon, string $ctext, string $kind, $d
     $comment = $ctext;
 
      $value = new Google_Service_Sheets_ValueRange();
-     $value->setValues([ 'values' => [ $date, $user, $kind, $url ,$comment ] ]);
+     $value->setValues([ 'values' => [ $date, $user, $kind, $url ,$comment ,$lat, $lon] ]);
      $resp = $service->spreadsheets_values->append($spreadsheetId ,  $sheet_tg , $value, [ 'valueInputOption' => 'USER_ENTERED' ] );
 
    // Slack へのPost
