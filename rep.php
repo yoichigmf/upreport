@@ -16,7 +16,7 @@ $spreadsheetId = getenv('SPREADSHEET_ID');
 //   書き込み対象シートの名前を取得しておく
 $target_sheetname = GetTargetSheetName( $spreadsheetId);
 
- $log->warning("target_sheet  ${target_sheetname}\n");
+# $log->warning("target_sheet  ${target_sheetname}\n");
 
 if (count($_POST) ==0 ) {
 
@@ -86,16 +86,42 @@ else {
 	if ( $_POST["command"] == "DATA" ) {
 
         #  data kind
+        #   0   text
+        #    1   image
+        #    2   movie
+        #    3  voice
+        #    4  file
         
         
                 $log->warning("data kind ");
                 $log->warning($_POST["kind"] );
-
+                
+          
 
                 $log->warning("data note ");
                 $log->warning($_POST["note"] );
     	#  data regist
 		#
+		
+		if ( $_POST["kind"] ==  0 ) {  #  text
+		
+		     $tgText=$_POST["note"];
+		     
+		     $user = $_POST["user"];
+		     $timestr = $_POST["postDate"];
+		     
+		     
+		     
+		     $lat = $_POST[];
+		     $lon = $_POST[];
+		     
+		     $kind = "text";
+		     
+		     $dev = "";
+		     
+		      AddText(  $user, $timestr, $lat, $lon, $tgText, $kind, $dev )
+		
+		}
 		#
                http_response_code( 200 );
                 $log->warning("DATA\n");
