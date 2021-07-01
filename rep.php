@@ -112,8 +112,8 @@ else {
 		     
 		     
 		     
-		     $lat = $_POST[];
-		     $lon = $_POST[];
+		     $lat = $_POST["lat"];
+		     $lon = $_POST["lon"];
 		     
 		     $kind = "text";
 		     
