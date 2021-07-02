@@ -132,7 +132,7 @@ else {
 		       $kind = "image";
 		       $ext = "jpg";
 		       
-		       $stream = $_POST["image"];
+		       $stream = base64_decode($_POST["image"]);
 		       
 		       $filename = upload_contents( $kind , $ext, 'application/octet-stream', $stream ,$appname );
 		       
