@@ -117,7 +117,7 @@ else {
 		     
 		     $kind = "text";
 		     
-		     $dev = "";
+		     $dev = "reportpost";
 		     
 		      AddText(  $user, $timestr, $lat, $lon, $tgText, $kind, $dev );
 		

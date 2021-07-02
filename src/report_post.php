@@ -284,7 +284,7 @@ $log->warning("lat lon  ${lat}  ${lon}\n");
     $comment = $ctext;
 
      $value = new Google_Service_Sheets_ValueRange();
-     $value->setValues([ 'values' => [ $date, $user, $kind, $url ,$comment ,$lat, $lon] ]);
+     $value->setValues([ 'values' => [ $date, $user, $kind, $url ,$comment ,$lat, $lon, $dev] ]);
      $resp = $service->spreadsheets_values->append($spreadsheetId ,  $sheet_tg , $value, [ 'valueInputOption' => 'USER_ENTERED' ] );
 
    // Slack へのPost
