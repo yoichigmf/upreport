@@ -11,6 +11,7 @@ use Monolog\Handler\StreamHandler;
 $log = new Logger('name');
 $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
+$appname = getenv('APPLICATION_NAME');
 
 $spreadsheetId = getenv('SPREADSHEET_ID');
 //   書き込み対象シートの名前を取得しておく
@@ -103,25 +104,45 @@ else {
     	#  data regist
 		#
 		
-		if ( $_POST["kind"] ==  0 ) {  #  text
-		
-		     $tgText=$_POST["note"];
-		     
-		     $user = $_POST["user"];
+		    $user = $_POST["user"];
 		     $timestr = $_POST["postDate"];
 		     
 		     
 		     
 		     $lat = $_POST["lat"];
 		     $lon = $_POST["lon"];
+		     $pgname = "reportpost";    
 		     
+		
+		if ( $_POST["kind"] ==  0 ) {  #  text
+		
+		     $tgText=$_POST["note"];
+		     
+
 		     $kind = "text";
 		     
-		     $dev = "reportpost";
+
 		     
-		      AddText(  $user, $timestr, $lat, $lon, $tgText, $kind, $dev );
+		      AddText(  $user, $timestr, $lat, $lon, $tgText, $kind, $pgname );   #  エラーハンドリングが必要
 		
 		}
+		
+		if ( $_POST["kind"] ==  1 ) {  #  image
+		
+		       $kind = "image";
+		       $ext = "jpg";
+		       
+		       $stream = $_POST["image"];
+		       
+		       $filename = upload_contents( $kind , $ext, 'application/octet-stream', $stream ,$appname );
+		       
+		       AddFileLink(  $user, $timestr, $lat, $lon, $filename, $kind, $pgname );
+		
+		
+		
+		}
+		
+			
 		#
                http_response_code( 200 );
                 $log->warning("DATA\n");

@@ -188,12 +188,12 @@ function  AddFileLink(  $user, $timestr, $lat, $lon, string $filepath, string $k
     $ncomment = "";  //  slack 書き出し用コメント
 
 
-              $log->addWarning("kind ${kind}\n");
+              $log->warning("kind ${kind}\n");
 
 
     if ( $kind == "image") {
 
-              $log->addWarning("image ${kind}\n");
+              $log->warning("image ${kind}\n");
       $imgurl = str_replace( "?dl=0", "?dl=1", $filepath );
       $orgfilename = "=image(\"${imgurl}\")";
 
@@ -220,12 +220,11 @@ function  AddFileLink(  $user, $timestr, $lat, $lon, string $filepath, string $k
     $url = $filepath;
 
 
-              $log->addWarning("comment ${comment}\n");
-
+              $log->warning("comment ${comment}\n");
 
 
      $value = new Google_Service_Sheets_ValueRange();
-     $value->setValues([ 'values' => [ $date, $user, $kind, $url ,$comment ] ]);
+     $value->setValues([ 'values' => [ $date, $user, $kind, $url ,$comment ,$lat, $lon, $dev] ]);
      $resp = $service->spreadsheets_values->append($spreadsheetId , $sheet_tg, $value, [ 'valueInputOption' => 'USER_ENTERED' ] );
 
      PostSlack($date, $user, $kind, $url ,$ncomment, "","");
@@ -391,7 +390,7 @@ function make_filename_path( $kind, $ext ){  //  make unique file name full path
 //  $content_type  application/octet-stream
 
 //  content upload to dropbox
-function upload_contents( $kind , $ext, $content_type, $response ,$appname ) {
+function upload_contents( $kind , $ext, $content_type, $stream ,$appname ) {
           global $log;
 
 
@@ -419,7 +418,7 @@ function upload_contents( $kind , $ext, $content_type, $response ,$appname ) {
 
 
 
-            $log->addWarning("file name ${tgfilename}\n");
+            $log->warnig("file name ${tgfilename}\n");
 
 
                  $options = array(
@@ -427,7 +426,7 @@ function upload_contents( $kind , $ext, $content_type, $response ,$appname ) {
                           CURLOPT_URL => $url,
                            CURLOPT_HTTPHEADER => $headers,
                            CURLOPT_POST => true,
-                            CURLOPT_POSTFIELDS => $response->getRawBody()
+                            CURLOPT_POSTFIELDS => $stream
                        );
 
                    $ch = curl_init();
@@ -436,7 +435,7 @@ function upload_contents( $kind , $ext, $content_type, $response ,$appname ) {
 
                  $result = curl_exec($ch);
 
-                 $log->addWarning("result ${result}\n");
+                 $log->warning("result ${result}\n");
 
 
                   curl_close($ch);
