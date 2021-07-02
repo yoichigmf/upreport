@@ -418,7 +418,7 @@ function upload_contents( $kind , $ext, $content_type, $stream ,$appname ) {
 
 
 
-            $log->warnig("file name ${tgfilename}\n");
+            $log->warning("file name ${tgfilename}\n");
 
 
                  $options = array(
