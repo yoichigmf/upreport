@@ -34,7 +34,7 @@ if (! empty($slack_hook_url)){
 
 
 
-  $log->addWarning("url ${webhook_url}\n");
+  $log->warning("url ${webhook_url}\n");
 
 
 
@@ -45,7 +45,7 @@ if (! empty($slack_hook_url)){
 
     $nnurl = str_replace( "?dl=0", "", $nurl );
 
-    $log->addWarning("new url ${nurl} nn ${nnurl}\n");
+    $log->warning("new url ${nurl} nn ${nnurl}\n");
 
     $attachment = new SlackAttachment("画像");
     $attachment->setImage($nnurl);
@@ -202,7 +202,7 @@ function  AddFileLink(  $user, $timestr, $lat, $lon, string $filepath, string $k
     else
     {
 
-                $log->addWarning("not image ${kind}\n");
+                $log->warning("not image ${kind}\n");
   //  $orgfilename = $event->getFileName();   //  元ファイル名
 
    //     $comment = $orgfilename;
@@ -394,7 +394,7 @@ function upload_contents( $kind , $ext, $content_type, $stream ,$appname ) {
           global $log;
 
 
-          $log->addWarning("upload contents in\n");
+          $log->warning("upload contents in\n");
 
  //          file upload
 
@@ -565,7 +565,7 @@ curl_setopt($curl, CURLOPT_HEADER, true);
     $header = substr($response, 0, $headerSize);
     $body = substr($response, $headerSize);
 
-    $log->addWarning("body --> ${body}\n");
+    $log->warning("body --> ${body}\n");
 
    $result = json_decode($body, true);
 
