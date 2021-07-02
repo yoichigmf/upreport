@@ -251,12 +251,15 @@ function  AddText(  $user, $timestr, $lat, $lon, string $ctext, string $kind, $d
    $spreadsheetId = getenv('SPREADSHEET_ID');
 
    global $target_sheetname;
+   global  $log;
+   
 
   //  書き込みシート名
  $sheet_tg = "${target_sheetname}!A1";
 
     $client = getClient();
 
+$log->warning("lat lon  ${lat}  ${lon}\n");
 
     $client->addScope(Google_Service_Sheets::SPREADSHEETS);
     $client->setApplicationName('AddSheet');
