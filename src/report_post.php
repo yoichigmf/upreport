@@ -428,6 +428,7 @@ function upload_contents( $kind , $ext, $content_type, $stream ,$appname ) {
                            CURLOPT_POST => true,
                             CURLOPT_POSTFIELDS => $stream
                        );
+                       toriaezu
 
                    $ch = curl_init();
 
